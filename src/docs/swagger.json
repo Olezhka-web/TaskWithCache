@@ -1,0 +1,183 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1-alpha",
+    "title": "Test Task",
+    "description": "Documentation for Test Task"
+  },
+  "paths": {
+    "/films": {
+      "post": {
+        "tags": [
+          "films"
+        ],
+        "summary": "Create New Film",
+        "description": "Method for create new film",
+        "operationId": "createFilm",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "body",
+            "required": true,
+            "description": "Must be Unique! Must not contain a space!",
+            "schema": {
+              "type": "string",
+              "example": "Film1"
+            }
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Description about Film1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created!"
+          },
+          "400": {
+            "description": "Film is already created Or Not Valid Req Params",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Film is already created with this title!"
+                },
+                "code": {
+                  "type": "number",
+                  "example": 0
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "films"
+        ],
+        "summary": "Get All Films",
+        "description": "Method for get all films",
+        "operationId": "getFilms",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1,
+                    "description": "Unique Film ID"
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "Film1",
+                    "description": "Unique Film Title"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Description about Film1",
+                    "description": "Description about film"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/films/:title": {
+      "get": {
+        "tags": [
+          "films"
+        ],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "description": "Must be Unique Title!",
+            "type": "string"
+          }
+        ],
+        "summary": "Get Film By Title",
+        "description": "Method for get film by title",
+        "operationId": "getFilmByTitle",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Film By Title",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1,
+                  "description": "Unique Film ID"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Film1",
+                  "description": "Unique Film Title"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Description about Film1",
+                  "description": "Description about film"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Not Valid Req Params",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "title fails to match the required pattern"
+                },
+                "code": {
+                  "type": "number",
+                  "example": 0
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Film not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "No Film Found With This Title!"
+                },
+                "code": {
+                  "type": "number",
+                  "example": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
