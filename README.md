@@ -62,7 +62,7 @@ ALLOWED_ORIGINS=
 npm run start:app
 ````
 
-## Work with data in DB
+## Working with data in DB
 ### Step 1 (Create tables)
 ````sh
 Copy SQL queries from the database.sql file
