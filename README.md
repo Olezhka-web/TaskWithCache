@@ -45,7 +45,8 @@ For Example:
 # Сan't change it
 NODE_ENV=dev
 
-# Set your DB_URL (from ElephantSQL cloud)
+# Set your DB_URL (from ElephantSQL cloud or local)
+#(For Example: postgres://UserName:Password@Hostname:5432/DBName)
 DB_URL=
 
 # Сan't change it or set your port
@@ -65,7 +66,7 @@ npm run start:app
 ### Step 1 (Create tables)
 ````sh
 Copy SQL queries from the database.sql file
-and insert in ElephantSQL cloud
+and insert in ElephantSQL cloud or local DB
 ````
 
 ### Step 2 (Create and Get test data)
